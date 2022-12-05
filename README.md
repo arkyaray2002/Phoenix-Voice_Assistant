@@ -1,4 +1,5 @@
 <h1>Phoenix - Voice Assistant</h1>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"> </a>
  Why to buy <b>ALEXA, GOOGLE NEST</b> ? Don't waste money on them, make your own Voice Assistant. <br><br>
 I've created a Personal Voice Assistant, named PHOENIX.<br><br>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"> </a>
