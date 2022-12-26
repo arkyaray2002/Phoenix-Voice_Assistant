@@ -15,6 +15,7 @@ I've created a Personal Voice Assistant, named PHOENIX.<br><br>
    <li> Who made you ? </li>
    <li> Why you came to the world ? </li>
    <li> Wikipedia Query </li>
+   <li> Open WhatsApp </li>
    <li> Open YouTube </li>
    <li> Open Google </li>
    <li> Open Camera / Take a photo </li>
