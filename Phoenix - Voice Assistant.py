@@ -17,6 +17,19 @@ engine.setProperty('voice', voices[1].id)
 def talk(text):
     engine.say(text)
     engine.runAndWait()
+
+def weatherReport():
+    place = 'Kolkata'
+    url = f'https://api.openweathermap.org/data/2.5/weather?q={place}&units=metric&appid=858f54c9786e8dab5e2306b06f55df26'
+
+    data = requests.get(url)
+    data = data.json()
+
+    talk('Your city is')
+    talk(data['name'])
+    talk(f"is {round(data['main']['temp'])} degree centigrade")
+    talk(f" and humidity  {round(data['main']['humidity'])} percent")
+
 def wishMe():
     hour = int(datetime.datetime.now().hour)
     if hour >= 0 and hour < 12:
@@ -56,20 +69,24 @@ def run_Phoenix():
     elif 'time' in command:
         time = datetime.datetime.now().strftime('%I:%M %p')
         talk('Current time is ' + time)
+        print(time)
     elif 'date' in command:
-        today = datetime.date.today()
+        today = datetime.datetime.now().strftime("%A %d %B %Y")
         talk('Today is ' + today)
     elif 'your name' in command:
         talk('My name is Phoenix, your Personal Voice Assistant, made with Artificial Intelligence.')
     elif "who made you" in command:
         talk("I am your virtual assistant PHOENIX, created by ARKYA RAY")
     elif "why you came to world" in command:
-        talk("Thanks to ARKYA. further It's a secret")
+        talk("Thanks to ARKYA, who created me. further It's a secret")
     elif 'who the heck is' in command:
         person = command.replace('who the heck is', '')
         info = wikipedia.summary(person, 1)
         print(info)
         talk(info)
+    elif 'open whatsapp' in command:
+        talk("Here you go to WhatsApp Web\n")
+        webbrowser.open("web.whatsapp.com")
     elif 'open youtube' in command:
         talk("Here you go to Youtube\n")
         webbrowser.open("youtube.com")
@@ -87,28 +104,7 @@ def run_Phoenix():
     elif 'joke' in command:
         talk(pyjokes.get_joke())
     elif "weather" in command:
-
-        # Google Open weather website
-        # to get API of Open weather
-        api_key = "Api key"
-        base_url = "http://api.openweathermap.org / data / 2.5 / weather?"
-        talk(" City name ")
-        print("City name : ")
-        city_name = take_command()
-        complete_url = base_url + "appid =" + api_key + "&q =" + city_name
-        response = requests.get(complete_url)
-        x = response.json()
-
-        if x["code"] != "404":
-            y = x["main"]
-            current_temperature = y["temp"]
-            current_pressure = y["pressure"]
-            current_humidiy = y["humidity"]
-            z = x["weather"]
-            weather_description = z[0]["description"]
-            print(" Temperature (in kelvin unit) = " + str(current_temperature) + "\n atmospheric pressure (in hPa unit) =" + str(current_pressure) + "\n humidity (in percentage) = " + str(current_humidiy) + "\n description = " + str(weather_description))
-        else:
-            talk(" City Not Found ")
+        weatherReport()
     else:
         talk('Please say the command again.')
 
